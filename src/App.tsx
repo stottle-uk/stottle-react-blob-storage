@@ -1,10 +1,10 @@
 import React from 'react';
-import BlobUploads from './azure-storage/components/BlobUploads';
 import ContainerList from './azure-storage/components/ContainerList';
-import FileInput from './azure-storage/components/FileInput';
+import InputFile from './azure-storage/components/InputFile';
 import ItemsDeleted from './azure-storage/components/ItemsDeleted';
 import ItemsDownloaded from './azure-storage/components/ItemsDownloaded';
 import ItemsList from './azure-storage/components/ItemsList';
+import ItemsUploaded from './azure-storage/components/ItemsUploaded';
 import SelectedContainer from './azure-storage/components/SelectedContainer';
 
 const App: React.FC = () => {
@@ -18,10 +18,10 @@ const App: React.FC = () => {
       <hr />
       <div className="container">
         <SelectedContainer>
-          <FileInput />
+          <InputFile />
           <ItemsList />
           <div className="item-details">
-            <BlobUploads />
+            <ItemsUploaded />
             <ItemsDownloaded />
             <ItemsDeleted />
           </div>

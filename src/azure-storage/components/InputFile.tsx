@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { uploadsViewStateContext } from '../contexts/viewStateContext';
 
-const FileInput: React.FC = () => {
+const InputFile: React.FC = () => {
   const context = useContext(uploadsViewStateContext);
 
   const uploadFiles = (files: FileList | null) =>
@@ -18,4 +18,4 @@ const FileInput: React.FC = () => {
   );
 };
 
-export default FileInput;
+export default InputFile;

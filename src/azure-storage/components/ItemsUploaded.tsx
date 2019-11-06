@@ -3,7 +3,7 @@ import { tap } from 'rxjs/operators';
 import { uploadsViewStateContext } from '../contexts/viewStateContext';
 import { BlobItemUpload } from '../types/azure-storage';
 
-const BlobUploads: React.FC = () => {
+const ItemsUploaded: React.FC = () => {
   const context = useContext(uploadsViewStateContext);
   const [items, setItems] = useState<BlobItemUpload[]>([]);
 
@@ -27,4 +27,4 @@ const BlobUploads: React.FC = () => {
   );
 };
 
-export default BlobUploads;
+export default ItemsUploaded;
