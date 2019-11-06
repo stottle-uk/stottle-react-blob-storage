@@ -22,9 +22,7 @@ import { BlobStorageService } from './BlobStorageService';
 import { SasGeneratorService } from './SasGeneratorService';
 
 export class BlobSharedViewStateService {
-  private selectedContainerInner$ = new BehaviorSubject<string>(
-    'containername'
-  );
+  private selectedContainerInner$ = new BehaviorSubject<string>('');
 
   containers$ = this.getStorageOptions().pipe(
     switchMap(options => this.blobStorage.getContainers(options))
