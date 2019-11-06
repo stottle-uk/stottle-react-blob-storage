@@ -16,17 +16,15 @@ const App: React.FC = () => {
 
       <ContainerList />
       <hr />
-      <div className="container">
-        <SelectedContainer>
-          <InputFile />
-          <ItemsList />
-          <div className="item-details">
-            <ItemsUploaded />
-            <ItemsDownloaded />
-            <ItemsDeleted />
-          </div>
-        </SelectedContainer>
-      </div>
+      <SelectedContainer className="container">
+        <InputFile />
+        <ItemsList />
+        <div className="item-details">
+          <ItemsUploaded />
+          <ItemsDownloaded />
+          <ItemsDeleted />
+        </div>
+      </SelectedContainer>
     </>
   );
 };

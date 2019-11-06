@@ -3,7 +3,8 @@ import { tap } from 'rxjs/operators';
 import { sharedViewStateContext } from '../contexts/viewStateContext';
 
 const SelectedContainer: React.FC<React.HTMLProps<HTMLDivElement>> = ({
-  children
+  children,
+  ...rest
 }) => {
   const context = useContext(sharedViewStateContext);
   const [containerName, setContainerName] = useState<string>();
@@ -18,10 +19,10 @@ const SelectedContainer: React.FC<React.HTMLProps<HTMLDivElement>> = ({
   useEffect(setSelectedContainer, []);
 
   return containerName ? (
-    <>
+    <div {...rest}>
       <h2>Container Files: {containerName}</h2>
       {children}
-    </>
+    </div>
   ) : (
     <></>
   );
