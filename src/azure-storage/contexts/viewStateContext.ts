@@ -1,4 +1,5 @@
 import React from 'react';
+import { BlobDeletesViewStateService } from '../services/BlobDeletesViewState';
 import { BlobDownloadsViewStateService } from '../services/BlobDownloadsViewState';
 import { BlobSharedViewStateService } from '../services/BlobSharedViewState';
 import { BlobStorageService } from '../services/BlobStorageService';
@@ -19,9 +20,14 @@ const downloadsViewState = new BlobDownloadsViewStateService(
   blobStorage,
   sharedViewState
 );
+const deletesViewState = new BlobDeletesViewStateService(
+  blobStorage,
+  sharedViewState
+);
 
 export const sharedViewStateContext = React.createContext(sharedViewState);
 export const uploadsViewStateContext = React.createContext(uploadsViewState);
 export const downloadsViewStateContext = React.createContext(
   downloadsViewState
 );
+export const deletesViewStateContext = React.createContext(deletesViewState);

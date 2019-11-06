@@ -2,6 +2,7 @@ import { BlobItem } from '@azure/storage-blob';
 import React, { useContext, useEffect, useState } from 'react';
 import { tap } from 'rxjs/operators';
 import {
+  deletesViewStateContext,
   downloadsViewStateContext,
   sharedViewStateContext
 } from '../contexts/viewStateContext';
@@ -9,6 +10,7 @@ import {
 const ItemsList: React.FC = () => {
   const sharedContext = useContext(sharedViewStateContext);
   const downloadsContext = useContext(downloadsViewStateContext);
+  const deletesContext = useContext(deletesViewStateContext);
   const [items, setItems] = useState<BlobItem[]>([]);
 
   const getContainerItemsEffect = () => {
@@ -23,6 +25,9 @@ const ItemsList: React.FC = () => {
   const onDownloadClick = (filename: string) =>
     downloadsContext.downloadItem(filename);
 
+  const onDeletedClick = (filename: string) =>
+    deletesContext.deleteItem(filename);
+
   return (
     <div className="items-list">
       {items.map((item, i) => (
@@ -31,7 +36,7 @@ const ItemsList: React.FC = () => {
           <span>{item.properties.lastModified.toISOString()}</span>
           <div>
             <button onClick={() => onDownloadClick(item.name)}>Download</button>
-            <button onClick={() => onDownloadClick(item.name)}>Delete</button>
+            <button onClick={() => onDeletedClick(item.name)}>Delete</button>
           </div>
         </div>
       ))}
