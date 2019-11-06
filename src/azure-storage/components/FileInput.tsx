@@ -8,7 +8,7 @@ const FileInput: React.FC = () => {
     files && context.uploadItems(files);
 
   return (
-    <div className="App">
+    <div className="input-file">
       <input
         type="file"
         multiple={true}

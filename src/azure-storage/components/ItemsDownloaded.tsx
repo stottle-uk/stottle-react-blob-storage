@@ -17,13 +17,13 @@ const ItemsDownloaded: React.FC = () => {
   useEffect(getDownloadedItems, []);
 
   return (
-    <div className="items-list">
+    <div className="items-downloaded">
       <h3>Downloads</h3>
 
       {items.map((item, i) => (
         <div key={i}>
           {item.containerName}:
-          <a href={item.url} target="_blank">
+          <a href={item.url} target="_blank" rel="noopener noreferrer">
             {item.filename}
           </a>
         </div>

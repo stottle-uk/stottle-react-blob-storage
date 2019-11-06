@@ -17,7 +17,7 @@ const ItemsDeleted: React.FC = () => {
   useEffect(getDownloadedItems, []);
 
   return (
-    <div className="items-list">
+    <div className="items-deleted">
       <h3>Deletes</h3>
 
       {items.map((item, i) => (

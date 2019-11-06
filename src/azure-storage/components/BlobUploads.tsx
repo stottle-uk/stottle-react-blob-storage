@@ -17,7 +17,7 @@ const BlobUploads: React.FC = () => {
   useEffect(getUploadsEffect, []);
 
   return (
-    <div className="uploads">
+    <div className="items-uploaded">
       <h3>Uploads</h3>
 
       {items.map((item, i) => (

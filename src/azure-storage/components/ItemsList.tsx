@@ -32,7 +32,8 @@ const ItemsList: React.FC = () => {
     <div className="items-list">
       {items.map((item, i) => (
         <div key={i}>
-          <span>{item.name}</span>|<span>{item.properties.contentLength}</span>|
+          <span>{item.name}</span>
+          <span>{item.properties.contentLength}</span>
           <span>{item.properties.lastModified.toISOString()}</span>
           <div>
             <button onClick={() => onDownloadClick(item.name)}>Download</button>
