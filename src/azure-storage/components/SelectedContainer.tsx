@@ -1,12 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { tap } from 'rxjs/operators';
-import { sharedViewStateContext } from '../contexts/viewStateContext';
+import { SharedViewStateContext } from '../contexts/viewStateContext';
 
 const SelectedContainer: React.FC<React.HTMLProps<HTMLDivElement>> = ({
   children,
   ...rest
 }) => {
-  const context = useContext(sharedViewStateContext);
+  const context = useContext(SharedViewStateContext);
   const [containerName, setContainerName] = useState<string>();
 
   const setSelectedContainer = () => {

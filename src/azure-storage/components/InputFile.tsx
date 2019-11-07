@@ -1,8 +1,8 @@
 import React, { useContext, useRef } from 'react';
-import { uploadsViewStateContext } from '../contexts/viewStateContext';
+import { UploadsViewStateContext } from '../contexts/viewStateContext';
 
 const InputFile: React.FC = () => {
-  const context = useContext(uploadsViewStateContext);
+  const context = useContext(UploadsViewStateContext);
   const inputFileRef = useRef<HTMLInputElement>(null);
 
   const uploadFiles = (files: FileList | null) =>

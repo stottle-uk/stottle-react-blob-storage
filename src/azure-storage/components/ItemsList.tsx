@@ -2,15 +2,15 @@ import { BlobItem } from '@azure/storage-blob';
 import React, { useContext, useEffect, useState } from 'react';
 import { tap } from 'rxjs/operators';
 import {
-  deletesViewStateContext,
-  downloadsViewStateContext,
-  sharedViewStateContext
+  DeletesViewStateContext,
+  DownloadsViewStateContext,
+  SharedViewStateContext
 } from '../contexts/viewStateContext';
 
 const ItemsList: React.FC = () => {
-  const sharedContext = useContext(sharedViewStateContext);
-  const downloadsContext = useContext(downloadsViewStateContext);
-  const deletesContext = useContext(deletesViewStateContext);
+  const sharedContext = useContext(SharedViewStateContext);
+  const downloadsContext = useContext(DownloadsViewStateContext);
+  const deletesContext = useContext(DeletesViewStateContext);
   const [items, setItems] = useState<BlobItem[]>([]);
 
   const getContainerItemsEffect = () => {
@@ -22,12 +22,6 @@ const ItemsList: React.FC = () => {
   };
   useEffect(getContainerItemsEffect, []);
 
-  const onDownloadClick = (filename: string) =>
-    downloadsContext.downloadItem(filename);
-
-  const onDeletedClick = (filename: string) =>
-    deletesContext.deleteItem(filename);
-
   return (
     <div className="items-list">
       {items.map((item, i) => (
@@ -36,8 +30,12 @@ const ItemsList: React.FC = () => {
           <span>{item.properties.contentLength}</span>
           <span>{item.properties.lastModified.toISOString()}</span>
           <div>
-            <button onClick={() => onDownloadClick(item.name)}>Download</button>
-            <button onClick={() => onDeletedClick(item.name)}>Delete</button>
+            <button onClick={() => downloadsContext.downloadItem(item.name)}>
+              Download
+            </button>
+            <button onClick={() => deletesContext.deleteItem(item.name)}>
+              Delete
+            </button>
           </div>
         </div>
       ))}

@@ -25,9 +25,9 @@ const deletesViewState = new BlobDeletesViewStateService(
   sharedViewState
 );
 
-export const sharedViewStateContext = React.createContext(sharedViewState);
-export const uploadsViewStateContext = React.createContext(uploadsViewState);
-export const downloadsViewStateContext = React.createContext(
+export const SharedViewStateContext = React.createContext(sharedViewState);
+export const UploadsViewStateContext = React.createContext(uploadsViewState);
+export const DownloadsViewStateContext = React.createContext(
   downloadsViewState
 );
-export const deletesViewStateContext = React.createContext(deletesViewState);
+export const DeletesViewStateContext = React.createContext(deletesViewState);

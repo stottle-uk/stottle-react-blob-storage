@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { tap } from 'rxjs/operators';
-import { uploadsViewStateContext } from '../contexts/viewStateContext';
+import { UploadsViewStateContext } from '../contexts/viewStateContext';
 import { BlobItemUpload } from '../types/azure-storage';
 
 const ItemsUploaded: React.FC = () => {
-  const context = useContext(uploadsViewStateContext);
+  const context = useContext(UploadsViewStateContext);
   const [items, setItems] = useState<BlobItemUpload[]>([]);
 
   const getUploadsEffect = () => {

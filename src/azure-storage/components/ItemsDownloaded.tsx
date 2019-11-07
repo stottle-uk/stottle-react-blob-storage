@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { tap } from 'rxjs/operators';
-import { downloadsViewStateContext } from '../contexts/viewStateContext';
+import { DownloadsViewStateContext } from '../contexts/viewStateContext';
 import { BlobItemDownload } from '../types/azure-storage';
 
 const ItemsDownloaded: React.FC = () => {
-  const context = useContext(downloadsViewStateContext);
+  const context = useContext(DownloadsViewStateContext);
   const [items, setItems] = useState<BlobItemDownload[]>([]);
 
   const getDownloadedItems = () => {
