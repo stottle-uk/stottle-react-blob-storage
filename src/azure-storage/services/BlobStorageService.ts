@@ -107,7 +107,7 @@ export class BlobStorageService {
 
   private buildConnectionString = (options: BlobStorageRequest) => {
     return (
-      `BlobEndpoint=https://${options.storageUri}.blob.core.windows.net/;` +
+      `BlobEndpoint=${options.storageUri};` +
       `SharedAccessSignature=${options.storageAccessToken}`
     );
   };

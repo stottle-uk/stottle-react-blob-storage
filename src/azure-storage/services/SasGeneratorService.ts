@@ -6,7 +6,7 @@ import { BlobStorageRequest } from '../types/azure-storage';
 export class SasGeneratorService {
   getSasToken(): Observable<BlobStorageRequest> {
     return Axios.get<BlobStorageRequest>(
-      'https://stottle-generate-sas-token.azurewebsites.net/api/GenerateSasToken'
+      'https://stottle-blob-storage-api.azurewebsites.net/api/GenerateSasToken'
     ).pipe(map(res => res.data));
   }
 }

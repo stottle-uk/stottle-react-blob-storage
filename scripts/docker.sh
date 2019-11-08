@@ -1,7 +1,7 @@
-docker build -t stottleuk/react-blob-storage  .
+docker build -t stottleuk/blob-storage-react  .
 
-docker tag stottleuk/react-blob-storage stottlecontainerregistry.azurecr.io/react-blob-storage
+docker tag stottleuk/blob-storage-react stottlecontainerregistry.azurecr.io/blob-storage-react
 
-docker run -p 3000:80 --rm stottlecontainerregistry.azurecr.io/react-blob-storage
+docker run -p 3000:80 --rm stottlecontainerregistry.azurecr.io/blob-storage-react
 
-# docker push stottlecontainerregistry.azurecr.io/react-blob-storage
+# docker push stottlecontainerregistry.azurecr.io/blob-storage-react
