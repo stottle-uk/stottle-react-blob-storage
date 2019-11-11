@@ -1,6 +1,6 @@
 # StottleReactBlobStorage
 
-Example code used for medium article about [Uploading to blob storage](https://medium.com/@stuarttottle/upload-to-azure-blob-storage-with-react-34f37805fdfc).
+Example code used for medium article about [Uploading to blob storage](https://medium.com/@stuarttottle/upload-to-azure-blob-storage-with-react-34f37805fdfc) and [Comparing React and Angular](https://medium.com/@stuarttottle/comparing-the-same-feature-written-in-react-and-angular-3f6ae04ceef6)
 
 ## Src Folder Structure
 
