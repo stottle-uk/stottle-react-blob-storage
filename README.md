@@ -2,6 +2,42 @@
 
 Example code used for medium article about [Uploading to blob storage](https://medium.com/@stuarttottle/upload-to-azure-blob-storage-with-react-34f37805fdfc).
 
+## Src Folder Structure
+
+```
+src
+│   App.tsx
+│
+└───azure-storage
+    │
+    └───components
+    │   │   ContainerList.tsx
+    │   │   InputFile.tsx
+    │   │   ItemsDeleted.tsx
+    │   │   ItemsDownloaded.tsx
+    │   │   ItemsList.tsx
+    │   │   ItemsUploaded.tsx
+    │   │   SelectedContainer.tsx
+    │
+    └───services
+    │   │   BlobDeletesViewState.ts
+    │   │   BlobDownloadedsViewState.ts
+    │   │   BlobSharedViewState.ts
+    │   │   BlobStorageViewState.ts
+    │   │   BlobUploadesViewState.ts
+    │   │   SasGeneratorService.ts
+    │
+    └───types
+    │   │   azure-storage.d.ts
+    │
+    └───contexts
+    │   │   * viewStateContext.tsx
+
+* Project specific files
+```
+
+---
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
