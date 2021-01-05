@@ -8,7 +8,7 @@
     "@types/node": "12.12.6",
     "@types/react": "16.9.11",
     "@types/react-dom": "16.9.4",
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "axios-observable": "^1.1.2",
     "node-sass": "^4.13.0",
     "react": "^16.11.0",
