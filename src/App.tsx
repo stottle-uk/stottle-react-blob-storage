@@ -29,7 +29,7 @@ const App: React.FC = () => {
   };
       return(
   <>
-    <button className="button-21" onClick={() => onProfileClick(profile.name)}>{profile.name}</button>
+    <button className="button-21" onClick={() => onProfileClick(profile.name)}>{profile.name==="VENDOR"?("SUPPLIER"):(profile.name)}</button>
     <Header/>
 
     <hr />

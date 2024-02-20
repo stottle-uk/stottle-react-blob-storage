@@ -45,7 +45,7 @@ const ContainerList: React.FC<profile> = (props) => {
         ))
       ) : (
         <div>
-          Welcome Vendor!
+          Welcome Supplier!
           {onContainerClick("upload")}
         </div>
       )}
