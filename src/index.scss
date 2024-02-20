@@ -16,7 +16,7 @@ code {
   display: flex;
   flex-flow: row wrap;
 
-  > * {
+  >* {
     box-sizing: border-box;
   }
 
@@ -36,15 +36,18 @@ code {
     border: 1px solid #eee;
     padding: 10px;
 
-    > div {
+    >div {
       display: flex;
       justify-content: space-between;
+
       span:nth-child(1) {
         width: 50%;
       }
+
       span:nth-child(2) {
         width: 10%;
       }
+
       span:nth-child(3) {
         width: 20%;
       }
@@ -71,4 +74,5 @@ code {
       width: 100%;
     }
   }
+
 }

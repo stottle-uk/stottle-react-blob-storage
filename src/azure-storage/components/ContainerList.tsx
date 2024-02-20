@@ -1,33 +1,54 @@
-import { ContainerItem } from '@azure/storage-blob';
-import React, { useContext, useEffect, useState } from 'react';
-import { tap } from 'rxjs/operators';
-import { SharedViewStateContext } from '../contexts/viewStateContext';
+import { ContainerItem } from "@azure/storage-blob";
+import React, { useContext, useEffect, useState } from "react";
+import { tap } from "rxjs/operators";
+import { SharedViewStateContext } from "../contexts/viewStateContext";
 
-const ContainerList: React.FC = () => {
+interface profile {
+  user: string;
+}
+
+const ContainerList: React.FC<profile> = (props) => {
   const context = useContext(SharedViewStateContext);
   const [items, setItems] = useState<ContainerItem[]>([]);
+  const [access, setAccess] = useState<Boolean>(false);
 
+  const { user } = props;
   const getContainersEffect = () => {
     const sub = context.containers$
-      .pipe(tap(items => setItems(items)))
+      .pipe(tap((items) => setItems(items)))
       .subscribe();
 
     return () => sub.unsubscribe();
   };
   useEffect(getContainersEffect, []);
-
-  const onContainerClick = (name: string) => context.getContainerItems(name);
+  useEffect(() => {
+    if (user === "VENDOR") {
+      setAccess(false);
+    } else {
+      setAccess(true);
+    }
+  }, [user]);
+  // const onContainerClick = (name: string) => context.getContainerItems(name);
+  const onContainerClick = (name: string) => {
+    context.getContainerItems(name);
+  };
 
   return (
     <div className="container-list">
-      <h3>Containers</h3>
-
-      {items.map((item, i) => (
-        <div key={i}>
-          {item.name}
-          <button onClick={() => onContainerClick(item.name)}>View</button>
+      <h3>Projects</h3>
+      {access ? (
+        items.map((item, i) => (
+          <div key={i}>
+            {item.name}
+            <button onClick={() => onContainerClick(item.name)}>View</button>
+          </div>
+        ))
+      ) : (
+        <div>
+          Welcome Vendor!
+          {onContainerClick("upload")}
         </div>
-      ))}
+      )}
     </div>
   );
 };

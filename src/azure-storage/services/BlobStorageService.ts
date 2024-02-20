@@ -1,13 +1,13 @@
-import { TransferProgressEvent } from '@azure/core-http';
-import { PagedAsyncIterableIterator } from '@azure/core-paging';
-import { BlobServiceClient, BlockBlobClient } from '@azure/storage-blob';
-import { from, Observable, Subscriber } from 'rxjs';
-import { distinctUntilChanged, scan, startWith } from 'rxjs/operators';
+import { TransferProgressEvent } from "@azure/core-http";
+import { PagedAsyncIterableIterator } from "@azure/core-paging";
+import { BlobServiceClient, BlockBlobClient } from "@azure/storage-blob";
+import { from, Observable, Subscriber } from "rxjs";
+import { distinctUntilChanged, scan, startWith } from "rxjs/operators";
 import {
   BlobContainerRequest,
   BlobFileRequest,
-  BlobStorageRequest
-} from '../types/azure-storage';
+  BlobStorageRequest,
+} from "../types/azure-storage";
 
 export class BlobStorageService {
   getContainers(request: BlobStorageRequest) {
@@ -17,6 +17,7 @@ export class BlobStorageService {
 
   listBlobsInContainer(request: BlobContainerRequest) {
     const containerClient = this.getContainerClient(request);
+    console.log(request);
     return this.asyncToObservable(containerClient.listBlobsFlat());
   }
 
@@ -47,22 +48,22 @@ export class BlobStorageService {
 
   private buildClient(options: BlobStorageRequest) {
     return BlobServiceClient.fromConnectionString(
-      this.buildConnectionString(options)
+      this.buildConnectionString(options),
     );
   }
 
   private uploadFile(blockBlobClient: BlockBlobClient, file: File) {
-    return new Observable<number>(observer => {
+    return new Observable<number>((observer) => {
       blockBlobClient
         .uploadBrowserData(file, {
           onProgress: this.onProgress(observer),
           blobHTTPHeaders: {
-            blobContentType: file.type
-          }
+            blobContentType: file.type,
+          },
         })
         .then(
           this.onUploadComplete(observer, file),
-          this.onUploadError(observer)
+          this.onUploadError(observer),
         );
     }).pipe(distinctUntilChanged());
   }
@@ -84,10 +85,10 @@ export class BlobStorageService {
   }
 
   private asyncToObservable<T, TService>(
-    iterable: PagedAsyncIterableIterator<T, TService>
+    iterable: PagedAsyncIterableIterator<T, TService>,
   ) {
     return new Observable<T>(
-      observer =>
+      (observer) =>
         void (async () => {
           try {
             for await (const item of iterable as AsyncIterable<T>) {
@@ -98,10 +99,10 @@ export class BlobStorageService {
           } catch (e) {
             observer.error(e);
           }
-        })()
+        })(),
     ).pipe(
       scan<T, T[]>((items, item) => [...items, item], []),
-      startWith([] as T[])
+      startWith([] as T[]),
     );
   }
 
