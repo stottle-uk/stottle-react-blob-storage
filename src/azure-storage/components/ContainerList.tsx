@@ -39,8 +39,13 @@ const ContainerList: React.FC<profile> = (props) => {
       {access ? (
         items.map((item, i) => (
           <div key={i}>
-            {item.name}
-            <button onClick={() => onContainerClick(item.name)}>View</button>
+            {item.name === "upload" ? (
+              <button onClick={() => onContainerClick(item.name)}>
+                Refresh Uploads
+              </button>
+            ) : (
+              <div></div>
+            )}
           </div>
         ))
       ) : (
