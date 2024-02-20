@@ -38,23 +38,23 @@ const App: React.FC = () => {
       </UserContext.Provider>
     <hr />
     <SelectedContainer className="container">
-      <InputFile />
+        {profile.name !=="VENDOR"?(<div></div>):(<InputFile />)}
         <UserContext.Provider value={profile}>
-
-        <ItemsList user={profile.name} />
+        {profile.name!=="VENDOR"?(
+            <>
+              <ItemsList user={profile.name}/>
+              <div className="item-details">
+                {/* <ItemsUploaded/>         */}
+                <ItemsDownloaded />
+                <ItemsDeleted />
+              </div>
+            </>
+          ):(
+            <div className="item-details-1">
+              <ItemsUploaded />
+            </div>
+          )}
         </UserContext.Provider>
-      <div className="item-details">
-        {profile.name==="VENDOR"? (
-          <ItemsUploaded />
-        ):(
-        <div>
-        <ItemsUploaded/>        
-        <ItemsDownloaded />
-        <ItemsDeleted />
-        </div>
-        )}
-          
-      </div>
     </SelectedContainer>
   </>
 );
