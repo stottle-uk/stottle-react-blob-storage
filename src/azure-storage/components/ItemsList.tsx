@@ -46,7 +46,7 @@ const ItemsList: React.FC<profile> = (props) => {
           <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
           <th>Last Modified</th>
           <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-          <th>Action</th>
+          <th>Actions</th>
         </tr>
         {access ? (
           items.map((item, i) => (
@@ -62,16 +62,16 @@ const ItemsList: React.FC<profile> = (props) => {
               </td>
               <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
               <td>
-                <div>
-                  <button
-                    onClick={() => downloadsContext.downloadItem(item.name)}
-                  >
-                    Download
-                  </button>
-                  <button onClick={() => deletesContext.deleteItem(item.name)}>
-                    Delete
-                  </button>
-                </div>
+                <button
+                  onClick={() => downloadsContext.downloadItem(item.name)}
+                >
+                  Download
+                </button>
+              </td>
+              <td>
+                <button onClick={() => deletesContext.deleteItem(item.name)}>
+                  Delete
+                </button>
               </td>
             </tr>
           ))
